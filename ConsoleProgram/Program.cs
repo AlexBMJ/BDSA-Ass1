@@ -7,10 +7,12 @@ namespace ConsoleProgram
     {
         static void Main(string[] args)
         {
-            var gc = new GreaterCountTypeConstraint();
-            var platypus = new Platypus(4);
-            var platypus_list = new List<Platypus>() {new Platypus(5), new Platypus(2)};
-            Console.WriteLine(gc.GreaterCount<Platypus, Animal>(platypus_list, platypus));
+            Predicate<int> even = (int i) => i % 2 == 0;
+
+            var test = Iterators.Filter<int>(new int[]{1, 2, 3, 4, 5}, even);
+            foreach(var item in test) {
+                Console.WriteLine(item);
+            }
         }
     }
 }
