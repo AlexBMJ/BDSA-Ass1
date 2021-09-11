@@ -22,12 +22,10 @@ namespace Assignment1 {
             }
         }
 
-        public static IEnumerable<string> InnerText(string html, string tag)
-        {
-            var wordRegex = new Regex(@"<a ?.+?>(?<content>.*?)<\/a>");
-            foreach (Match htmlTag in wordRegex.Matches(html))
-            {
-                var content = htmlTag.Groups["content"].Value;
+        public static IEnumerable<string> InnerText(string html, string tag) {
+            var tagRegex = new Regex($@"<{tag}.*?>(?<inner>.*?)<\/{tag}>");
+            foreach (Match htmlTag in tagRegex.Matches(html)) {
+                var content = htmlTag.Groups["inner"].Value;
                 yield return content;
             }
         }
