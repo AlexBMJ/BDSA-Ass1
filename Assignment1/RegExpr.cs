@@ -22,8 +22,14 @@ namespace Assignment1 {
             }
         }
 
-        public static IEnumerable<string> InnerText(string html, string tag) {
-            throw new NotImplementedException();
+        public static IEnumerable<string> InnerText(string html, string tag)
+        {
+            var wordRegex = new Regex(@"<a ?.+?>(?<content>.*?)<\/a>");
+            foreach (Match htmlTag in wordRegex.Matches(html))
+            {
+                var content = htmlTag.Groups["content"].Value;
+                yield return content;
+            }
         }
     }
 }

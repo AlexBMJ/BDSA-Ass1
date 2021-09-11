@@ -7,12 +7,8 @@ namespace ConsoleProgram
     {
         static void Main(string[] args)
         {
-            Predicate<int> even = (int i) => i % 2 == 0;
-
-            var test = Iterators.Filter<int>(new int[]{1, 2, 3, 4, 5}, even);
-            foreach(var item in test) {
-                Console.WriteLine(item);
-            }
+            var html = "<div>/n<p>The phrase <i>regular expressions</i> (and consequently, regexes) is often used to mean the specific, standard textual syntax for representing <u>patterns</u> that matching <em>text</em> need to conform to.</p>/n</div>";
+            var tag = "a";
         }
     }
 }
