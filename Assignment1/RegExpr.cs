@@ -24,9 +24,11 @@ namespace Assignment1 {
 
         public static IEnumerable<string> InnerText(string html, string tag) {
             var tagRegex = new Regex($@"<{tag}.*?>(?<inner>.*?)<\/{tag}>");
+            var tagRemoval = new Regex(@"<\/?[a-z]+.*?>");
             foreach (Match htmlTag in tagRegex.Matches(html)) {
-                var content = htmlTag.Groups["inner"].Value;
-                yield return content;
+                var innerRaw = htmlTag.Groups["inner"].Value;
+                var innerText = tagRemoval.Replace(innerRaw, "");
+                yield return innerText;
             }
         }
     }
