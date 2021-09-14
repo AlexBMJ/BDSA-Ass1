@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Assignment1 {
     public class Animal : IComparable<Animal> {
-        private int kids;
+        private readonly int kids;
 
-        public Animal(int kids) {
+        protected Animal(int kids) {
             this.kids = kids;
         }
         public int CompareTo(Animal that) {
             if (this.kids < that.kids) return -1;
-            if (this.kids == that.kids) return 0;
-            return 1;
+            return this.kids == that.kids ? 0 : 1;
         }
     }
 
@@ -20,14 +20,10 @@ namespace Assignment1 {
     }
 
     public class GreaterCountTypeConstraint {
-        public int GreaterCount<T, U>(IEnumerable<T> items, T x)
+        public static int GreaterCount<T, U>(IEnumerable<T> items, T x)
             where T : U
             where U : IComparable<U> {
-            var greaterCount = 0;
-            foreach (T t in items)
-                if (t.CompareTo(x) > 0)
-                    greaterCount++;
-            return greaterCount;
+            return items.Count(t => t.CompareTo(x) > 0);
         }
     }
 }
