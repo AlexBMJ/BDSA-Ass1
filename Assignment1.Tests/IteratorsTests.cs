@@ -13,6 +13,14 @@ namespace Assignment1.Tests {
             Assert.Equal(new [] {2, 4}, test);
         }
 
+        [Theory]
+        [InlineData(1, 3, 5, 7)]
+        public void Filter_GivenOnlyOddNumbers_ReturnEmptyArray(params int[] numbers) {
+            bool Even(int i) => i % 2 == 0;
+            var test = Iterators.Filter(numbers, Even);
+            Assert.Equal(new int[] {}, test);
+        }
+
         [Fact]
         public void Flatten_Given_Nested_Array_1through6_returns_Single_Array_1through6() {
             List<List<int>> list = new ();

@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using Assignment1;
 namespace ConsoleProgram
 {
     class Program
     {
         static void Main(string[] args) {
-            var nested_html = @"<div>
+            /* var nested_html = @"<div>
                 <p>The phrase <i>regular expressions</i> (and consequently, regexes) is often used to mean the specific, standard textual syntax for representing <u>patterns</u> that matching <em>text</em> need to conform to.</p>
                 </div>";
             var html = @"<div>
@@ -15,8 +14,8 @@ namespace ConsoleProgram
             var tag = "a";
             foreach (var result in RegExpr.InnerText(nested_html, "p")) {
                 Console.WriteLine(result);
-            }
-            foreach (var result in RegExpr.Resolution("1920x1080\n1024x768, 800x600, 640x480\n320x200, 320x240, 800x600\n1280x960")) {
+            } */
+            foreach (var result in RegExpr.Resolution("1920x1080x957")) {
                 Console.WriteLine($"({result.width.ToString()}, {result.height.ToString()})");
             }
         }
